@@ -3,19 +3,157 @@
 <head>
   <title>kaitalk</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <script type="importmap">
-  {
-    "imports": {
-      "react-dom/": "https://esm.sh/react-dom@^19.2.1/",
-      "@google/genai": "https://esm.sh/@google/genai@^1.32.0",
-      "react": "https://esm.sh/react@^19.2.1",
-      "react/": "https://esm.sh/react@^19.2.1/"
+  <style>
+    :root {
+      --background-color: #121212;
+      --text-color: #e0e0e0;
+      --primary-red: #ff4136;
+      --dark-red: #d13026;
+      --light-gray: #333;
+      --user-bubble: #2a2a2a;
+      --ai-bubble: #3a3a3a;
     }
+    body {
+      background-color: var(--background-color);
+      color: var(--text-color);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+    }
+    #root {
+        width: 100%;
+        height: 100%;
+    }
+    .container {
+      width: 100%;
+      max-width: 600px;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      box-sizing: border-box;
+      padding: 20px;
+      margin: 0 auto;
+    }
+    h1 {
+      color: var(--primary-red);
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+    .transcript-container {
+      flex-grow: 1;
+      overflow-y: auto;
+      border: 1px solid var(--light-gray);
+      border-radius: 8px;
+      padding: 10px;
+      margin-bottom: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .transcript-bubble {
+      max-width: 80%;
+      padding: 10px 15px;
+      border-radius: 18px;
+      line-height: 1.4;
+      text-align: left;
+      margin: 0;
+    }
+    .transcript-bubble strong {
+       color: var(--primary-red);
+       display: block;
+       margin-bottom: 4px;
+    }
+    .user {
+      background-color: var(--user-bubble);
+      align-self: flex-end;
+      border-bottom-right-radius: 4px;
+    }
+    .ai {
+      background-color: var(--ai-bubble);
+      align-self: flex-start;
+      border-bottom-left-radius: 4px;
+    }
+    .controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 10px;
+    }
+    .voice-selector {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    label, select, button {
+      font-size: 1rem;
+    }
+    select {
+      background-color: var(--light-gray);
+      color: var(--text-color);
+      border: 1px solid var(--primary-red);
+      border-radius: 4px;
+      padding: 8px;
+    }
+    button {
+      border: none;
+      border-radius: 5px;
+      padding: 12px 24px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background-color 0.2s;
+    }
+    .start-button {
+      background-color: var(--primary-red);
+      color: var(--background-color);
+    }
+    .start-button:hover {
+      background-color: var(--dark-red);
+    }
+    .stop-button {
+      background-color: var(--light-gray);
+      color: var(--text-color);
+      border: 1px solid var(--primary-red);
+    }
+    .stop-button:hover {
+      background-color: #444;
+    }
+    .status {
+      min-height: 1.5em;
+      color: #aaa;
+    }
+    /* Scrollbar styles */
+    .transcript-container::-webkit-scrollbar {
+        width: 8px;
+    }
+    .transcript-container::-webkit-scrollbar-track {
+        background: var(--background-color);
+    }
+    .transcript-container::-webkit-scrollbar-thumb {
+        background-color: var(--primary-red);
+        border-radius: 4px;
+    }
+  </style>
+<script type="importmap">
+{
+  "imports": {
+    "react-dom/": "https://esm.sh/react-dom@^19.2.1/",
+    "@google/genai": "https://esm.sh/@google/genai@^1.32.0",
+    "react": "https://esm.sh/react@^19.2.1",
+    "react/": "https://esm.sh/react@^19.2.1/"
   }
-  </script>
+}
+</script>
 </head>
 <body>
   <div id="root"></div>
-  <script type="module" src="/src/index.tsx"></script>
+  <script type="module" src="/index.tsx"></script>
 </body>
 </html>
