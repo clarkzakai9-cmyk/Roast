@@ -1,0 +1,7 @@
+{
+  "description": "Talk to an AI with multiple voice options.",
+  "requestFramePermissions": [
+    "microphone"
+  ],
+  "name": "kaitalk"
+}
